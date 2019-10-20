@@ -3,16 +3,15 @@ nav {
   list-style-type: none;
   margin-bottom: 25px
   padding: 25px;
-  color: #ffffff;
   background-color: #33363b;
 }
 
 /* for container of GAN editor and Information box */
-.container {
-  margin-bottom: 25px
+.content {
   padding: 25px;
-  background-color: #eaeaea;
-}
+  background-color: #ffffff;
+  font-family: 'calibri';
+  font-size: 21px;
 
 /* for bottom footer */
 footer {
@@ -21,4 +20,6 @@ footer {
   padding: 25px;
   background-color: #33363b;
   color: #ffffff;
+  font-family: 'calibri';
+  font-size: 21px;
 }
