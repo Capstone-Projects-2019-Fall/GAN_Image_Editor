@@ -1,0 +1,24 @@
+/* for top navbar */
+nav {
+  list-style-type: none;
+  margin-bottom: 25px
+  padding: 25px;
+  color: #ffffff;
+  background-color: #33363b;
+}
+
+/* for container of GAN editor and Information box */
+.container {
+  margin-bottom: 25px
+  padding: 25px;
+  background-color: #eaeaea;
+}
+
+/* for bottom footer */
+footer {
+  list-style-type: none;
+  margin-top: 25px;
+  padding: 25px;
+  background-color: #33363b;
+  color: #ffffff;
+}
