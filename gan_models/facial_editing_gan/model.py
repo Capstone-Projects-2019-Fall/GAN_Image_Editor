@@ -151,3 +151,34 @@ def D(data, n_att, dim=64, fc_dim=1024, n_layers=5):
         label_gan = fc(label_gan, n_att)
 
         return image_gan, label_gan
+
+
+# Objective function for the discriminator
+# Pass in image tensor and decoder tensor
+def gradient_penalty(f, real, fake=None):
+    def _interpolate(a, b=None):
+        with tf.name_scope('interpolate'):
+            if b is None:   # interpolation in DRAGAN
+                beta = tf.random_uniform(shape=tf.shape(a), minval=0., maxval=1.)
+                _, variance = tf.nn.moments(a, range(a.shape.ndims))
+                b = a + 0.5 * tf.sqrt(variance) * beta
+            shape = [tf.shape(a)[0]] + [1] * (a.shape.ndims - 1)
+            alpha = tf.random_uniform(shape=shape, minval=0., maxval=1.)
+            inter = a + alpha * (b - a)
+            inter.set_shape(a.get_shape().as_list())
+            return inter
+
+    with tf.name_scope('gradient_penalty'):
+        # Interpolation between original and reconstruction
+        x = _interpolate(real, fake)
+
+        # Get prediction from the Discriminator
+        pred = f(x)
+        if isinstance(pred, tuple):
+            pred = pred[0]
+
+        # Calculate gradient
+        grad = tf.gradients(pred, x)[0]
+        norm = tf.norm(slim.flatten(grad), axis=1)
+        gp = tf.reduce_mean((norm - 1.)**2)
+        return gp
