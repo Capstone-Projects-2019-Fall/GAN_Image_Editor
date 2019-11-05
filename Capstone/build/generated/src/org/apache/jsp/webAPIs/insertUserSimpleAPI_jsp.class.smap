@@ -1,0 +1,12 @@
+SMAP
+insertUserSimpleAPI_jsp.java
+JSP
+*S JSP
+*F
++ 0 insertUserSimpleAPI.jsp
+webAPIs/insertUserSimpleAPI.jsp
+*L
+1,7:47
+13,79:59
+91,2:138
+*E
