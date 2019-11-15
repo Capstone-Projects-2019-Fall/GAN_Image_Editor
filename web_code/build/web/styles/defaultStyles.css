@@ -1,0 +1,73 @@
+
+#navBarNothing {
+    background-color: #72829e;
+    
+    vertical-align:bottom;
+    white-space:nowrap;
+    /* text-align:center;*/
+
+    position:fixed; 
+    top:0px;
+    left:0px;
+    z-index: 1;     
+    width: 100%;    
+
+    margin-bottom: 25px;
+    padding: 3px;
+    padding-bottom: 10px; 
+
+    font-weight: bold;
+    box-shadow: 0px 0px 5px black;  /* give a little "3D"  effect to the bottom of the title area */
+
+    /* min-width: 700px;  stop nav bar from unwanted overlap with title */
+}
+
+/*
+#GANLogo, .navLink {
+    text-decoration:none;
+}
+*/
+
+#testFlaskArea td{
+    width: 33%;
+}
+
+/*
+td, div {
+    border: solid red 1px;
+    padding: 0;
+}
+
+
+.navLinkContainer {
+    display:inline;
+}
+
+.navItem {
+    display:inline;
+}
+*/
+
+/* for container of GAN editor and Information box */
+/*
+.content {
+  padding: 25px;
+  background-color: #ffffff;
+  font-family: 'calibri';
+  font-size: 21px;
+}
+*/
+/* for bottom footer */
+/*
+footer {
+  list-style-type: none;
+  margin-top: 25px;
+  padding: 25px;
+  background-color: #33363b;
+  color: #ffffff;
+  font-family: 'calibri';
+  font-size: 21px;
+}
+*/
+
+
