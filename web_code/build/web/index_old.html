@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>GAN Image Editor</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./styles/defaultStyles.css" type="text/css">
+    </head>
+    <body>
+        
+        <div id="navBar">
+            <div id="test1" style="display:inline-block">
+                <a id="GANLogo" href="#/home">
+                    <img src="./pics/logos/neural2.png" width="50" height="50" alt="GAN Image Editor Logo">
+                </a>
+            <span id="navLogoText">Gan Image Editor</span>
+            </div>
+
+            <div id="test2" style="display:inline-block">
+                <a class="navLink" href="#/home">Home</a>
+                <a class="navLink" href="#/facialGAN">Facial GAN</a>
+                <a class="navLink" href="#/styleGAN">Style GAN</a>
+                <a class="navLink" href="#/qualityGAN">Quality GAN</a>
+            </div>
+
+            <div id="test3" style="display:inline-block">
+                <form id="navLogonForm">
+                    <input  type="search" placeholder="Search" aria-label="Search">
+                    <button  type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+        
+        
+        <div id="content">It works!</div>
+        
+        <footer id="footer"></footer>
+        
+        <script src="js/components/home.js"></script>
+        <script src="js/route.js"></script>
+        
+    </body>
+</html>
