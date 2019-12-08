@@ -23,6 +23,7 @@ parser = argparse.ArgumentParser()
 
 # Define all variable for test and model parameters
 parser.add_argument('--experiment_name', dest='experiment_name', help='experiment_name')
+parser.add_argument('--img_size', dest='img_size', default=128)
 parser.add_argument('--test_att', dest='test_att', help='test_att')
 parser.add_argument('--test_int_min', dest='test_int_min', type=float, default=-1.0, help='test_int_min')
 parser.add_argument('--test_int_max', dest='test_int_max', type=float, default=1.0, help='test_int_max')
@@ -32,7 +33,7 @@ args = parser.parse_args()
 # Model Parameters
 atts = ['Bald', 'Bangs', 'Black_Hair', 'Blond_Hair', 'Brown_Hair', 'Bushy_Eyebrows', 'Eyeglasses', 'Male', 'Mouth_Slightly_Open', 'Mustache', 'No_Beard', 'Pale_Skin', 'Young']
 n_att = len(atts)
-img_size = 128
+img_size = args.img_size
 shortcut_layers = 1
 inject_layers = 0
 enc_dim = 64
@@ -42,6 +43,16 @@ dis_fc_dim = 1024
 enc_layers = 5
 dec_layers = 5
 dis_layers = 5
+
+if(img_size == 384):
+    enc_dim = 48
+    dec_dim = 48
+    dis_dim = 48
+    dis_fc_dim = 512
+    shortcut_layers = 1
+    inject_layers = 1
+    
+
 # Test parameters
 test_att = args.test_att
 thres_int = .5
