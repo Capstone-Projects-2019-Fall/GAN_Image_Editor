@@ -1,5 +1,6 @@
 package model.webUser;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.sql.ResultSet;
 
@@ -24,7 +25,7 @@ public class StringDataListImage {
 
     // Adds creates a StringData element from a ResultSet (from SQL select statement), 
     // then adds that new element to the array list of StringData elements.
-    public void add(ResultSet results) {
+    public void add(ResultSet results) throws IOException {
         StringDataImage sd = new StringDataImage(results);
         this.imageList.add(sd);
     }

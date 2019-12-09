@@ -7,6 +7,12 @@ import model.webUser.*;
 
 // classes in my project
 import dbUtils.*;
+import java.awt.Dimension;
+import java.io.File;
+import java.util.Iterator;
+import javax.imageio.ImageIO;
+import javax.imageio.ImageReader;
+import javax.imageio.stream.ImageInputStream;
 
 public class WebUserView {
 
@@ -59,6 +65,35 @@ public class WebUserView {
             sdl.add(sd);
         }
         return sdl;
+    }
+    
+    public static StringDataImage getImageByName(StringData loggedOnWebUser, String fileName){
+        StringDataImage sdi = new StringDataImage();
+        sdi.imagePath = fileName;
+        
+        try{
+            File imageFile = new File("/var/lib/tomcat7/webapps/FA19_3308_tud31981/pics/test/" + fileName);
+            try(ImageInputStream in = ImageIO.createImageInputStream(imageFile)){
+                final Iterator<ImageReader> readers = ImageIO.getImageReaders(in);
+                if (readers.hasNext()) {
+                    ImageReader reader = readers.next();
+                    try {
+                        reader.setInput(in);
+                        Dimension dimensions = new Dimension(reader.getWidth(0), reader.getHeight(0));
+                        Integer w = new Integer(dimensions.width);
+                        Integer h = new Integer(dimensions.height);
+                        sdi.width = w.toString();
+                        sdi.height = h.toString();
+                    } finally {
+                        reader.dispose();
+                    }
+                }
+            } 
+        } catch (Exception e) {
+            sdi.errorMsg += " " + e.getMessage();
+        }
+        
+        return sdi;
     }
 
 }

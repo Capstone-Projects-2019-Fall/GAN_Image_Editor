@@ -1,6 +1,7 @@
 "use strict";
 
 function ajax_upload_form (id){
+    console.log("ajax_upload_form called.");
 
     var httpReq;
     if (window.XMLHttpRequest) {
@@ -15,12 +16,19 @@ function ajax_upload_form (id){
 
     httpReq.onload=function(event){ 
         if(event.target.response.toString().includes("Successful upload!")){
+            if (httpReq.readyState === 4) {
+                if (httpReq.status === 200) {
+                    console.log(httpReq);
+                }
+            }
+            
             account.UI('content');
         }
         else{
             alert("The server says: " + event.target.response);
         }
     };
+    
 
     var formData = new FormData(document.getElementById(id)); 
     httpReq.send(formData);

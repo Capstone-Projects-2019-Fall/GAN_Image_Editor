@@ -124,7 +124,18 @@
                         } else if (errorMsgs.errorMsg.contains("foreign key")) {
                             errorMsgs.errorMsg = "Invalid User Role Id";
                         } else if (errorMsgs.errorMsg.contains("Duplicate entry")) {
-                            errorMsgs.errorMsg = "That email address is already taken";
+                            
+                            sql = "UPDATE image_table SET user_id=? WHERE image_path = ?";
+                            
+                            pStatement = new PrepStatement(dbc, sql);
+                            pStatement.setInt(1, ValidationUtils.integerConversion(insertData.userId));
+                            pStatement.setString(2, insertData.imagePath); // string type is simple
+                            
+                            numRows = pStatement.executeUpdate();
+                            errorMsgs.errorMsg = pStatement.getErrorMsg();
+                            
+                            //TODO: CHECK FOR ERRORS HERE
+                            //errorMsgs.errorMsg = "That email address is already taken";
                         }
 
                     } // all fields passed validation
