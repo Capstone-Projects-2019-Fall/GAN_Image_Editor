@@ -5,7 +5,7 @@ The StyleGAN implementation for the GAN Image Editor is built on Impersonator. A
 ## Web Implementation of Impersonator (Appearance Transfer)
 1. Set up `Impersonator` and make sure it is functioning before proceeding. Go to the `Impersonator` section for instructions on the set up.
 
-2. Run:
+2. Start up server by running:
 ```
 . /opt/anaconda3/etc/profile.d/conda.sh   
 conda activate swapnet
@@ -15,9 +15,7 @@ python charles_app.py
 
 ## Impersonator
 PyTorch implementation of ICCV 2019 paper:
-
 Liquid Warping GAN: A Unified Framework for Human Motion Imitation, Appearance Transfer and Novel View Synthesis
-
 [[paper]](https://arxiv.org/pdf/1909.12224.pdf) [[website]](https://svip-lab.github.io/project/impersonator) [[Supplemental Material]](https://svip-lab.github.io/project_img/impersonator/4701-supp.pdf) [[Dataset]](https://svip-lab.github.io/dataset/iPER_dataset.html)
 
 <p float="center">
@@ -49,7 +47,6 @@ conda activate swapnet
 ```
 
 Go back to installing the `Requirements` and `Installation` if impersonator runs into any issues on the GPU machine.
-
 Also be sure you are running the virtual environment every time you are using impersonator
 
 ```
