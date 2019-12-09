@@ -203,7 +203,7 @@ Appearance Transfer
         --save_res 
     ```
 
-#### Batch Testing
+### Batch Testing
 1. Start the `swapnet` virutal environment.
 2. Place input images in `impersonator/testing_inputs/`
 3. Run auto_test.py (for the pretrained model) or auto_custom_test.py (half-trained model) and it will randomly go through the input folder. The outputs will be moved to `impersonator/testing_outputs/`
