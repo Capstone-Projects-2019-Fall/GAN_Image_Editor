@@ -112,6 +112,7 @@ account.UI = function (id){
             var imgContainer = document.createElement("span");
             var img = document.createElement("img");
             var imgPath = response.imageList[i].imagePath;
+            
             var imgOptions = document.createElement("div");
             var optionChoices = document.createElement("a");
             var imgIcon = document.createElement("img");
@@ -142,7 +143,8 @@ account.UI = function (id){
             img.src = "./pics/test/" + imgPath;
             img.alt = "";
             img.id = "picId:" + response.imageList[i].imageId;
-            //img.setAttribute("style", "maxWidth: 50px; padding: 3%;");
+            
+            img.setAttribute("style", "max-width: 100%; max-height: 100%; padding: 3%;");
             
             imgOptions.setAttribute("style", "width: 100%; height: auto;");
             
@@ -165,11 +167,6 @@ account.UI = function (id){
             tableData.appendChild(imgCard);
             row.appendChild(tableData);
             
-            console.log("-*-*-*-*-*-*-*-*-*-*");
-            console.log(imgCard.offsetWidth);
-            console.log(imgCard.offsetHeight);
-            console.log("-*-*-*-*-*-*-*-*-*-*");
-            
             function deletePhoto(){
                 //ajax({url:"webAPIs/getUserImageFileNames.jsp", successFn:success2, errorId:"userPictures"});
                 ;
@@ -190,6 +187,7 @@ account.UI = function (id){
             }
         }
     }
+
     
     function success(response) {
         
