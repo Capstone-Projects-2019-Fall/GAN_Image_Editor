@@ -63,5 +63,13 @@ function home(id) {
 
            
     `;
-    document.getElementById(id).innerHTML = homeContent;
+    
+    var homeElement = document.getElementById(id);
+    
+    if(homeElement){
+        homeElement.innerHTML = homeContent;
+    }
+    else{
+        console.log("Could not find element with id: '" + id + "' in function home(id)");
+    }
 }

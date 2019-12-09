@@ -4,7 +4,7 @@ function qualityGAN(id) {
         
    
     var qualityContent = `  
-        <h2> Quality Editing GAN Model! </h2>
+        <h2 style="text-align: center;"> Quality Editing GAN Model! </h2>
     
     
         <!-- <div id="qualityFlaskHere"></div> -->
@@ -16,7 +16,15 @@ function qualityGAN(id) {
         <div id="qualityResponseContainer"></div>
     `;
     
-    document.getElementById(id).innerHTML = qualityContent;
+    var qualityElement = document.getElementById(id);
+    
+    if(qualityElement){
+        qualityElement.innerHTML = qualityContent;
+    }
+    else{
+        console.log("Could not find element with id: '" + id + "' in function qualityGAN(id)");
+        return;
+    }
     
     //showTestFlask("qualityFlaskHere");
     

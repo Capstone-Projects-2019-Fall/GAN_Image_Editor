@@ -4,7 +4,7 @@ function styleGAN(id) {
         
    
     var styleContent = `  
-        <h2> Style Editing GAN Model! </h2>
+        <h2 style="text-align: center;"> Style Editing GAN Model! </h2>
     
         <!-- <div id="styleFlaskHere"></div> -->
     
@@ -15,7 +15,15 @@ function styleGAN(id) {
         <div id="styleResponseContainer"></div>
     `;
     
-    document.getElementById(id).innerHTML = styleContent;
+    var styleElement = document.getElementById(id);
+    
+    if(styleElement){
+        styleElement.innerHTML = styleContent;
+    }
+    else{
+        console.log("Could not find element with id: '" + id + "' in function styleGAN(id)");
+        return;
+    }
     
     //showTestFlask("styleFlaskHere");
     

@@ -25,7 +25,7 @@ account.UI = function (id){
             <section id="one">
                 <div class="inner">
                         <header style="text-align:center;">
-                                <h2><u>Account Page</u></h2>
+                                <h2>Account Page</h2>
                         </header>
                 </div>
             </section>
@@ -71,8 +71,16 @@ account.UI = function (id){
     -->
     `;
     
-
-    document.getElementById(contentId).innerHTML = accountContent;    
+    var accountElement = document.getElementById(contentId);
+    
+    if(accountElement){
+        accountElement.innerHTML = accountContent;
+    }
+    else{
+        console.log("Could not find element with id: '" + id + "' in function userAccount(id)");
+        return;
+    }
+    
     document.getElementById("accountSubmitButton").addEventListener('click', function(){ajax_upload_form("uploadForm");});
     update.userHasEnteredAccountPage();
     
@@ -87,25 +95,56 @@ account.UI = function (id){
         console.log(response);
         console.log("------------------------");
         
+        var table = document.createElement("table");
+        table.setAttribute("style", "");
+        var tableBody = document.createElement("tbody");
+        tableBody.setAttribute("style", "");
+        var row = document.createElement("tr");
+        row.setAttribute("style", "");
+        
+        tableBody.appendChild(row);
+        table.appendChild(tableBody);
+        picsContainer.appendChild(table);
+        
         for(var i = 0 ; i < response.imageList.length ; i++){
-            var imgDivContainer = document.createElement("div");
-            var imgSpanContainer = document.createElement("span");
+            var tableData = document.createElement("td");
+            var imgCard = document.createElement("div");
+            var imgContainer = document.createElement("span");
             var img = document.createElement("img");
             var imgPath = response.imageList[i].imagePath;
+            var imgOptions = document.createElement("div");
+            var optionChoices = document.createElement("a");
+            var imgIcon = document.createElement("img");
+            var optionFacial = document.createElement("a");
+            var facialIcon = document.createElement("img");
+            var optionStyle = document.createElement("a");
+            var styleIcon = document.createElement("img");
+            var optionQuality = document.createElement("a");
+            var qualityIcon = document.createElement("img");
+            var optionDelete = document.createElement("a");
+            var deleteIcon = document.createElement("img");
+            var imgNaturalWidth = response.imageList[i].width;
+            var imgNaturalHeight = response.imageList[i].height;
             
-            if(((i + 4) % 3) === 0){
-                imgDivContainer.classList.add("4u$");
-            }
-            else{
-                imgDivContainer.classList.add("4u");
+            if(isFirstImgOfRow(i)){
+                row = document.createElement("tr");
+                row.setAttribute("style", "");
+                tableBody.appendChild(row);
             }
             
-            imgSpanContainer.classList.add("image", "fit");
+            tableData.setAttribute("style", "border: green solid 1px; text-align:center; height: 450px;");
+            
+            imgCard.setAttribute("style", "width: 80%; height: 80%; text-align: center; display:inline-block; height: 85%; border: red solid 1px;");
+            
+            imgContainer.classList.add("image", "fit");
+            imgContainer.setAttribute("style", "overflow: hidden; height: 80%; width: 100%; vertical-align: top; margin: 0%; display: inline-block; border: blue solid 1px;");
             
             img.src = "./pics/test/" + imgPath;
             img.alt = "";
             img.id = "picId:" + response.imageList[i].imageId;
-            img.setAttribute("style", "maxWidth: 50px; padding: 3%;");
+            //img.setAttribute("style", "maxWidth: 50px; padding: 3%;");
+            
+            imgOptions.setAttribute("style", "width: 100%; height: auto;");
             
             /*
             var testButton = document.createElement("button");
@@ -120,13 +159,34 @@ account.UI = function (id){
             picsContainer.appendChild(imgSetContainer);
             */
            
-           imgSpanContainer.appendChild(img);
-           imgDivContainer.appendChild(imgSpanContainer);
-           picsContainer.appendChild(imgDivContainer);
+           
+            imgContainer.appendChild(img);
+            imgCard.appendChild(imgContainer);
+            tableData.appendChild(imgCard);
+            row.appendChild(tableData);
+            
+            console.log("-*-*-*-*-*-*-*-*-*-*");
+            console.log(imgCard.offsetWidth);
+            console.log(imgCard.offsetHeight);
+            console.log("-*-*-*-*-*-*-*-*-*-*");
             
             function deletePhoto(){
                 //ajax({url:"webAPIs/getUserImageFileNames.jsp", successFn:success2, errorId:"userPictures"});
                 ;
+            }
+            
+            function isFirstImgOfRow(index) {
+                if(((index + 4) % 3) === 1){
+                    return true;
+                }
+                return false;
+            }
+            
+            function isLastImgOfRow(index){
+                if(((index + 4) % 3) === 0){
+                    return true;
+                }
+                return false;
             }
         }
     }

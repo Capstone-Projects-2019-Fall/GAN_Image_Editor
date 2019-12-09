@@ -7,29 +7,28 @@ function displayFacialGAN(responseContainerId) {
     var display = `
         <section id="two">
                 <div class="inner">
-                        <article>
-                                <div class="content">
+                        <article style="padding: 0% 5%">
+                                <div class="content ganModelImgContainer">
                                         <header>
                                                 <h3>Input Image</h3>
                                         </header>
                                         <div class="image fit">
                                                 <img id="facialInputImg" src="pics/test/image-placeholder.png" alt="" />
-                                        </div>
-                                        
-                                        <h3 style="text-align:center;">Upload an Image</h3>
-                                        <div class="inner" style="display:inline-block;">
-                                                <form method="post" action="webAPIs/uploadPhoto.jsp" encType="multipart/form-data" id="uploadFacialForm">
-                                                    <input class="button" type="file" name="file_name" size="50"/>
-                                                    <!-- <input type="submit" value="upload"/> -->
-                                                </form>
-                                        </div>
+                                        </div>                                       
+                                    
+                                
+                                        <form method="post" action="webAPIs/uploadPhoto.jsp" encType="multipart/form-data" id="uploadFacialForm">
+                                            <input id="facialGANInput" class="button" type="file" name="file_name" accept="image/png, image/jpeg" size="50" style="display: none; width: 85%; padding: 0px; line-height: 22px; background-color: #f3f3f3; color: #5a5a5a !important;"/>
+                                        </form>
 
-                                        <button id="facialSubmitButton" >Submit</button>
+                                        <button id="facialSubmitButton" style="display:none;">Submit</button>
+    
+                                        <button id="facialInputButton" style="border-radius: 3px;">Upload Image</button>
                                         
                                 </div>
-                        </article>
-                        <article class="alt">
-                                <div class="content">
+                        </article >
+                        <article class="alt" style="padding: 0% 5%">
+                                <div class="content ganModelImgContainer">
                                         <header>
                                                 <h3>Output Image</h3>
                                         </header>
@@ -37,189 +36,265 @@ function displayFacialGAN(responseContainerId) {
                                                 <img id="facialOutputImg" src="pics/test/image-placeholder.png" alt="" />
                                         </div>
     
-                                        <button id="qualityRunButton" >Run Model</button>
+                                        <button id="facialRunButton" style="border-radius: 3px;">Run Trained Model</button>
+                                </div>
+                        </article>
+                        <article class="alt" style="padding: 0% 5%">
+                                <div class="content ganModelImgContainer">
+                                        <header>
+                                                <h3>Output Image</h3>
+                                        </header>
+                                        <div class="image fit">
+                                                <img id="customFacialOutputImg" src="pics/test/image-placeholder.png" alt="" />
+                                        </div>
+    
+                                        <button id="customFacialRunButton" style="border-radius: 3px;">Run Custom Model</button>
                                 </div>
                         </article>
                 </div>
         </section>
-        <div>
-            <span>
-                <span>
-                    Select the attribute you want to change:
-                    <select id="attributeToChange" style="width: 100px">
-                        <option value="bald">Bald</option>
-                        <option value="bangs">Bangs</option>
-                        <option value="blackhair">Black Hair</option>
-                        <option value="blondhair">Blond Hair</option>
-                        <option value="brownhair">Brown Hair</option>
-                        <option value="bushyeyebrows">Bushy Eyebrows</option>
-                        <option value="eyeglasses">Eyeglasses</option>
-                        <option value="male">Male</option>
-                        <option value="mouthslightlyopen">Mouth Slightly Open</option>
-                        <option value="mustache">Mustache</option>
-                        <option value="nobeard">No Beard</option>
-                        <option value="paleskin">Pale Skin</option>
-                        <option value="young">Young</option>
-                    </select>
-                </span>
-                <span>
-                    Select the intensity of the attribute you want to change:
-                    <select id="attributeIntensity" style="width: 100px">
-                        <option value="one">1</option>
-                        <option value="two">2</option>
-                        <option value="three">3</option>
-                        <option value="four">4</option>
-                        <option value="five">5</option>
-                        <option value="six">6</option>
-                        <option value="seven">7</option>
-                        <option value="eight">8</option>
-                        <option value="nine">9</option>
-                        <option value="ten">10</option>
-                    </select>
-                </span>
     
-                
-                <span>
-                <br>
-                <br>
-                Describe the attributes of your input image:
-                </span>
-                
-                
-                <span>
-                    Bald:
-                    <select id="attributeBald" style="width: 100px">
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
-                    </select>
-                </span>
-                <span>
-                    Bangs:
-                    <select id="attributeBangs" style="width: 100px">
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
-                    </select>
-                </span>
-                <span>
-                    Black Hair:
-                    <select id="attributeBlackHair" style="width: 100px">
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
-                    </select>
-                </span>
-                <span>
-                    Blond Hair:
-                    <select id="attributeBlondHair" style="width: 100px">
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
-                    </select>
-                </span>
-                <span>
-                    Brown Hair:
-                    <select id="attributeBrownHair" style="width: 100px">
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
-                    </select>
-                </span>
-                <span>
-                    Bushy Eyebrows:
-                    <select id="attributeBushyEyebrows" style="width: 100px">
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
-                    </select>
-                </span>
-                <span>
-                    Eyeglasses:
-                    <select id="attributeEyeglasses" style="width: 100px">
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
-                    </select>
-                </span>
-                <span>
-                    Male:
-                    <select id="attributeMale" style="width: 100px">
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
-                    </select>
-                </span>
-                <span>
-                    Mouth Slightly Open:
-                    <select id="attributeMouthSlightlyOpen" style="width: 100px">
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
-                    </select>
-                </span>
-                <span>
-                    Mustache:
-                    <select id="attributeMustache" style="width: 100px">
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
-                    </select>
-                </span>
-                <span>
-                    No Beard:
-                    <select id="attributeNoBeard" style="width: 100px">
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
-                    </select>
-                </span>
-                <span>
-                    Pale Skin:
-                    <select id="attributePaleSkin" style="width: 100px">
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
-                    </select>
-                </span>
-                <span>
-                    Young:
-                    <select id="attributeYoung" style="width: 100px">
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
-                    </select>
-                </span>
-            </span>
-        </div>
+        <section id="two" style="padding: 1% 0%">
+                <div class="inner">
+                        <article style="padding: 0% 5%">
+                                <div class="content">
+                                    <div style="text-align: center;">
+                                        <strong>Describe the attributes of your input image:</strong>
+                                    </div>
+    
+                                    <span>
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Bald?</td>
+                                                    <td>Yes</td>
+                                                    <td><input style="display: inline-block; float: none; opacity: 100; " id="attributeBaldYes" type="radio" name="bald" value="yes" checked></td>
+                                                    <td>No</td>
+                                                    <td><input style="display: inline-block; float: none; opacity: 100; " id="attributeBaldNo" type="radio" name="bald" value="no"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Bangs?</td>
+                                                    <td>Yes</td>
+                                                    <td><input style="display: inline-block; float: none; opacity: 100; " id="attributeBangsYes" type="radio" name="bangs" value="yes" checked></td>
+                                                    <td>No</td>
+                                                    <td><input style="display: inline-block; float: none; opacity: 100; " id="attributeBangsNo" type="radio" name="bangs" value="no"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Black Hair?</td>
+                                                    <td>Yes</td>
+                                                    <td><input style="display: inline-block; float: none; opacity: 100; " id="attributeBlackHairYes" type="radio" name="blackHair" value="yes" checked></td>
+                                                    <td>No</td>
+                                                    <td><input style="display: inline-block; float: none; opacity: 100; " id="attributeBlackHairNo" type="radio" name="blackHair" value="no"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Blond Hair?</td>
+                                                    <td>Yes</td>
+                                                    <td><input style="display: inline-block; float: none; opacity: 100; " id="attributeBlondHairYes" type="radio" name="blondHair" value="yes" checked></td>
+                                                    <td>No</td>
+                                                    <td><input style="display: inline-block; float: none; opacity: 100; " id="attributeBlondHairNo" type="radio" name="blondHair" value="no"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Brown Hair?</td>
+                                                    <td>Yes</td>
+                                                    <td><input style="display: inline-block; float: none; opacity: 100; " id="attributeBrownHairYes" type="radio" name="brownHair" value="yes" checked></td>
+                                                    <td>No</td>
+                                                    <td><input style="display: inline-block; float: none; opacity: 100; " id="attributeBrownHairNo" type="radio" name="brownHair" value="no"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Bushy Eyebrows?</td>
+                                                    <td>Yes</td>
+                                                    <td><input style="display: inline-block; float: none; opacity: 100; " id="attributeBushyEyebrowsYes" type="radio" name="eyebrows" value="yes" checked></td>
+                                                    <td>No</td>
+                                                    <td><input style="display: inline-block; float: none; opacity: 100; " id="attributeBushyEyebrowsNo" type="radio" name="eyebrows" value="no"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Eyeglasses?</td>
+                                                    <td>Yes</td>
+                                                    <td><input style="display: inline-block; float: none; opacity: 100; " id="attributeEyeglassesYes" type="radio" name="eyeglasses" value="yes" checked></td>
+                                                    <td>No</td>
+                                                    <td><input style="display: inline-block; float: none; opacity: 100; " id="attributeEyeglassesNo" type="radio" name="eyeglasses" value="no"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Male?</td>
+                                                    <td>Yes</td>
+                                                    <td><input style="display: inline-block; float: none; opacity: 100; " id="attributeMaleYes" type="radio" name="male" value="yes" checked></td>
+                                                    <td>No</td>
+                                                    <td><input style="display: inline-block; float: none; opacity: 100; " id="attributeMaleYesNo" type="radio" name="male" value="no"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Mouth Slightly Open?</td>
+                                                    <td>Yes</td>
+                                                    <td><input style="display: inline-block; float: none; opacity: 100; " id="attributeMouthSlightlyOpenYes" type="radio" name="mouth" value="yes" checked></td>
+                                                    <td>No</td>
+                                                    <td><input style="display: inline-block; float: none; opacity: 100; " id="attributeMouthSlightlyOpenNo" type="radio" name="mouth" value="no"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Mustache?</td>
+                                                    <td>Yes</td>
+                                                    <td><input style="display: inline-block; float: none; opacity: 100; " id="attributeMustacheYes" type="radio" name="mustache" value="yes" checked></td>
+                                                    <td>No</td>
+                                                    <td><input style="display: inline-block; float: none; opacity: 100; " id="attributeMustacheNo" type="radio" name="mustache" value="no"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>No Beard?</td>
+                                                    <td>Yes</td>
+                                                    <td><input style="display: inline-block; float: none; opacity: 100; " id="attributeNoBeardYes" type="radio" name="beard" value="yes" checked></td>
+                                                    <td>No</td>
+                                                    <td><input style="display: inline-block; float: none; opacity: 100; " id="attributeNoBeardNo" type="radio" name="beard" value="no"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Pale Skin?</td>
+                                                    <td>Yes</td>
+                                                    <td><input style="display: inline-block; float: none; opacity: 100; " id="attributePaleSkinYes" type="radio" name="pale" value="yes" checked></td>
+                                                    <td>No</td>
+                                                    <td><input style="display: inline-block; float: none; opacity: 100; " id="attributePaleSkinNo" type="radio" name="pale" value="no"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Young?</td>
+                                                    <td>Yes</td>
+                                                    <td><input style="display: inline-block; float: none; opacity: 100; " id="attributeYoungYes" type="radio" name="young" value="yes" checked></td>
+                                                    <td>No</td>
+                                                    <td><input style="display: inline-block; float: none; opacity: 100; " id="attributeYoungNo" type="radio" name="young" value="no"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+    
+                                        <br>
+                                    </span>
+                                </div>
+                        </article>
+                        <article class="alt" style="padding: 0% 5%">
+                                <div style="text-align: center;">
+                                    <strong>What do you want to change?</strong>
+                                </div>
+                                <div class="content">
+                                
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td>Select an attribute you want to change:</td>
+                                                <td style="padding: 0% 0%; vertical-align: middle;">
+                                                    <select id="attributeToChange" style="float: right; display: inline-block; width: 100px">
+                                                    <option value="bald">Bald</option>
+                                                    <option value="bangs">Bangs</option>
+                                                    <option value="blackhair">Black Hair</option>
+                                                    <option value="blondhair">Blond Hair</option>
+                                                    <option value="brownhair">Brown Hair</option>
+                                                    <option value="bushyeyebrows">Bushy Eyebrows</option>
+                                                    <option value="eyeglasses">Eyeglasses</option>
+                                                    <option value="male">Male</option>
+                                                    <option value="mouthslightlyopen">Mouth Slightly Open</option>
+                                                    <option value="mustache">Mustache</option>
+                                                    <option value="nobeard">No Beard</option>
+                                                    <option value="paleskin">Pale Skin</option>
+                                                    <option value="young">Young</option>
+                                                    </select>   
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Select the intensity of the change:</td>
+                                                <td style="padding: 0% 0%; vertical-align: middle;">
+                                                    <select id="attributeIntensity" style="float: right; display: inline-block; width: 100px">
+                                                        <option value="one">1</option>
+                                                        <option value="two">2</option>
+                                                        <option value="three">3</option>
+                                                        <option value="four">4</option>
+                                                        <option value="five">5</option>
+                                                        <option value="six">6</option>
+                                                        <option value="seven">7</option>
+                                                        <option value="eight">8</option>
+                                                        <option value="nine">9</option>
+                                                        <option value="ten">10</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+    
+    <!--
+                                    <span>
+                                        Select an attribute you want to change:
+                                    </span>
+                                    &nbsp
+                                    <select id="attributeToChange" style="float: right; display: inline-block; width: 100px">
+                                        <option value="bald">Bald</option>
+                                        <option value="bangs">Bangs</option>
+                                        <option value="blackhair">Black Hair</option>
+                                        <option value="blondhair">Blond Hair</option>
+                                        <option value="brownhair">Brown Hair</option>
+                                        <option value="bushyeyebrows">Bushy Eyebrows</option>
+                                        <option value="eyeglasses">Eyeglasses</option>
+                                        <option value="male">Male</option>
+                                        <option value="mouthslightlyopen">Mouth Slightly Open</option>
+                                        <option value="mustache">Mustache</option>
+                                        <option value="nobeard">No Beard</option>
+                                        <option value="paleskin">Pale Skin</option>
+                                        <option value="young">Young</option>
+                                    </select>    
+    
+                                    <br>
+                                    
+                                    <span>
+                                        Select the intensity of the change:
+                                    </span>
+                                    &nbsp
+                                    <select id="attributeIntensity" style="float: right; display: inline-block; width: 100px">
+                                        <option value="one">1</option>
+                                        <option value="two">2</option>
+                                        <option value="three">3</option>
+                                        <option value="four">4</option>
+                                        <option value="five">5</option>
+                                        <option value="six">6</option>
+                                        <option value="seven">7</option>
+                                        <option value="eight">8</option>
+                                        <option value="nine">9</option>
+                                        <option value="ten">10</option>
+                                    </select>
+    -->
+                                </div>
+                        </article >
+                </div>
+        </section>
+   
     `;
     
     facialGANContainer.innerHTML = display;
+    
     document.getElementById("facialSubmitButton").addEventListener('click', function(){ajax_upload_form_non_user("uploadFacialForm", "facialInputImg");});
     
+    document.getElementById("facialGANInput").onchange = function(e) {
+        document.getElementById("facialSubmitButton").click();
+    };
     
+    document.getElementById("facialInputButton").onclick = function() {
+        document.getElementById("facialGANInput").click();
+    };
+
     
-    function facialRun(){
-        var v1 = document.getElementById("attributeToChange").value;
-        var v2 = document.getElementById("attributeIntensity").value;
-        var v3 = document.getElementById("attributeBald").value;
-        var v4 = document.getElementById("attributeBangs").value;
-        var v5 = document.getElementById("attributeBlackHair").value;
-        var v6 = document.getElementById("attributeBlondHair").value;
-        var v7 = document.getElementById("attributeBrownHair").value;
-        var v8 = document.getElementById("attributeBushyEyebrows").value;
-        var v9 = document.getElementById("attributeEyeglasses").value;
-        var v10 = document.getElementById("attributeMale").value;
-        var v11 = document.getElementById("attributeMouthSlightlyOpen").value;
-        var v12 = document.getElementById("attributeMustache").value;
-        var v13 = document.getElementById("attributeNoBeard").value;
-        var v14 = document.getElementById("attributePaleSkin").value;
-        var v15 = document.getElementById("attributeYoung").value;
+    function facialRun(modelInt){
         
         var fileName = document.getElementById("facialInputImg").src;
         fileName = fileName.substring(fileName.lastIndexOf("/") + 1);
         
         var paramStringToSend = fileName + "/";
         
-        paramStringToSend += getParamString(v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15);
+        paramStringToSend += getParamString();
         
-        runFlask({paramString: paramStringToSend, portNum:'7010', funcInvoke:'facial', imgId:'facialInputImg', responseId:responseContainerId});
+        runFlask({paramString: paramStringToSend, portNum: '7010', funcInvoke: 'facial', imgId: 'facialInputImg', responseId:responseContainerId, modelType: modelInt});
     }
     
-    document.getElementById("qualityRunButton").addEventListener('click', function(){facialRun();});
+    document.getElementById("facialRunButton").addEventListener('click', function(){facialRun("0");});
+    document.getElementById("customFacialRunButton").addEventListener('click', function(){facialRun("1");});
     
     var inputDiv = document.createElement("div");
     var outputDiv = document.createElement("div");
     
-    function getParamString(toChange, intensity, bald, bangs, blackHair, blondHair, brownHair, bushyEyebrows, eyeGlasses, male, mouthSlightlyOpen, mustache, noBeard, paleSkin, young) {
+    function getParamString( male, mouthSlightlyOpen, mustache, noBeard, paleSkin, young) {
         var returnString = "";
+        
+        var toChange = document.getElementById("attributeToChange").value;
+        var intensity = document.getElementById("attributeIntensity").value;
+        
         
         if(toChange.includes("bald")){
             returnString += "Bald";
@@ -265,7 +340,7 @@ function displayFacialGAN(responseContainerId) {
         
         
         if(intensity.includes("one")){
-            returnString += "1";
+            returnString += "2";    //1 is currently not working
         }
         else if(intensity.includes("two")){
             returnString += "2";
@@ -298,91 +373,91 @@ function displayFacialGAN(responseContainerId) {
         returnString += "+";
         
         
-        if(bald.includes("yes")){
+        if(document.getElementById("attributeBaldYes").checked){
             returnString += "1";
         }
         else{
             returnString += "0";
         }
         
-        if(bangs.includes("yes")){
+        if(document.getElementById("attributeBangsYes").checked){
             returnString += "1";
         }
         else{
             returnString += "0";
         }
         
-        if(blackHair.includes("yes")){
+        if(document.getElementById("attributeBlackHairYes").checked){
             returnString += "1";
         }
         else{
             returnString += "0";
         }
         
-        if(blondHair.includes("yes")){
+        if(document.getElementById("attributeBlondHairYes").checked){
             returnString += "1";
         }
         else{
             returnString += "0";
         }
         
-        if(brownHair.includes("yes")){
+        if(document.getElementById("attributeBrownHairYes").checked){
             returnString += "1";
         }
         else{
             returnString += "0";
         }
         
-        if(bushyEyebrows.includes("yes")){
+        if(document.getElementById("attributeBushyEyebrowsYes").checked){
             returnString += "1";
         }
         else{
             returnString += "0";
         }
         
-        if(eyeGlasses.includes("yes")){
+        if(document.getElementById("attributeEyeglassesYes").checked){
             returnString += "1";
         }
         else{
             returnString += "0";
         }
         
-        if(male.includes("yes")){
+        if(document.getElementById("attributeMaleYes").checked){
             returnString += "1";
         }
         else{
             returnString += "0";
         }
         
-        if(mouthSlightlyOpen.includes("yes")){
+        if(document.getElementById("attributeMouthSlightlyOpenYes").checked){
             returnString += "1";
         }
         else{
             returnString += "0";
         }
         
-        if(mustache.includes("yes")){
+        if(document.getElementById("attributeMustacheYes").checked){
             returnString += "1";
         }
         else{
             returnString += "0";
         }
         
-        if(noBeard.includes("yes")){
+        if(document.getElementById("attributeNoBeardYes").checked){
             returnString += "1";
         }
         else{
             returnString += "0";
         }
         
-        if(paleSkin.includes("yes")){
+        if(document.getElementById("attributePaleSkinYes").checked){
             returnString += "1";
         }
         else{
             returnString += "0";
         }
         
-        if(young.includes("yes")){
+        if(document.getElementById("attributeYoungYes").checked){
             returnString += "1";
         }
         else{

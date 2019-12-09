@@ -4,7 +4,7 @@ function facialGAN(id) {
         
    
     var facialContent = `  
-        <h2> Facial Editing GAN Model! </h2>
+        <h2 style="text-align: center;"> Facial Editing GAN Model! </h2>
     
         <!-- <div id="facialFlaskHere"></div> -->
     
@@ -15,7 +15,15 @@ function facialGAN(id) {
         <div id="facialResponseContainer"></div>
     `;
     
-    document.getElementById(id).innerHTML = facialContent;
+    var facialElement = document.getElementById(id);
+    
+    if(facialElement){
+        facialElement.innerHTML = facialContent;
+    }
+    else{
+        console.log("Could not find element with id: '" + id + "' in function facialGAN(id)");
+        return;
+    }
     
     //showTestFlask("facialFlaskHere");
     
