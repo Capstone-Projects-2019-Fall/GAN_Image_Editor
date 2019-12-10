@@ -24,8 +24,6 @@ function updateLogin (){
 update.userHasLoggedOff = function () {
     this.loginLink.innerHTML = "Log in";
     this.loginLink.setAttribute("href", "#/userLogon");
-    //this.loginLink.addEventListener('click', function(){logon.UI("content");});
-    
     
     if(location.hash.slice(1).includes("userAccount")){
         home("content");
@@ -35,20 +33,19 @@ update.userHasLoggedOff = function () {
 
 update.userHasLoggedIn = function () {
     this.loginLink.innerHTML = "Account";
-    this.loginLink.addEventListener('click', function(){userAccount("content");});
-    /*
-    update.loginLink.innerHTML = "Logout";
-    update.loginLink.onclick = userLogout;
-    */
+    this.loginLink.setAttribute("href", "#/userAccount");
+    
+    if(location.hash.slice(1).includes("userLogon")){
+        account.UI("content");
+    }
 };
 
 update.userHasEnteredAccountPage = function () {
     this.loginLink.innerHTML = "Logout";
-    this.loginLink.addEventListener('click', function(){userLogout();});
-}
+    this.loginLink.setAttribute("href", "#/userLogout");
+};
 
 update.userHasLeftAccountPage = function () {
     this.loginLink.innerHTML = "Account";
-    this.loginLink.addEventListener('click', function(){userAccount("content");});
-    
-}
+    this.loginLink.setAttribute("href", "#/userAccount");
+};

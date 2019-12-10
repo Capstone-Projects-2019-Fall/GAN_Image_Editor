@@ -41,9 +41,14 @@ function ajax (params){
                 
                 params.successFn(retval);  // like the jQuery ajax call, pass back JSON already parsed to JS objecg
             } else {
-                // First use of property creates new (custom) property
-                document.getElementById(params.errorId).innerHTML = "Error (" + httpReq.status + " " + httpReq.statusText +
-                        ") while attempting to read '" + params.url + "'";
+                if(errorId){
+                    document.getElementById(params.errorId).innerHTML = "Error (" + httpReq.status + " " + httpReq.statusText +
+                           ") while attempting to read '" + params.url + "'";
+                }
+                else{
+                    console.log("Error (" + httpReq.status + " " + httpReq.statusText +
+                           ") while attempting to read '" + params.url + "'");
+                }
             }
         }
     }; // end of anonymous function

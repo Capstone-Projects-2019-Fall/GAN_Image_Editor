@@ -141,8 +141,8 @@ function showTestFlask (id) {
 }
 
 function runFlask(params){
-    
-    if(!params || !params.responseId || !params.portNum || !params.funcInvoke || !params.imgId){
+    //new param, picDescId
+    if(!params || !params.responseId || !params.portNum || !params.funcInvoke || !params.imgId || !params.modelType){
         myconsole.log("runFlask", "Incorrect params passed in. Need strings portNum, funcInvoke");
         return;
     }
@@ -154,11 +154,11 @@ function runFlask(params){
     var responseEle = document.getElementById(params.responseId);
     var errors = false;
     var paramString;
+    var modelType = params.modelType;
     
     if(params.paramString){
         paramString = params.paramString;
     }
-    
     
     if(parseInt(portNum) < 1024 || parseInt(portNum) > 49151){
         responseEle.innerHTML = "Error: Enter in a valid port number to send request to. Range: 1024 to 49151.";
@@ -223,6 +223,9 @@ function runFlask(params){
         flaskURL += paramString;
     }
     
+    flaskURL += "/";
+    flaskURL += modelType;
+    
     myconsole.log("Function runFlask. This is the flaskURL:", flaskURL);
     ajax({url:flaskURL, successFn:processGPUResponse, errorId:responseEle});
     
@@ -232,17 +235,38 @@ function runFlask(params){
         
         var outputImgId;
         if(funcInvoke.includes("facial")){
-            outputImgId = document.getElementById("facialOutputImg");
+            if(modelType.includes("0")){
+                outputImgId = document.getElementById("facialOutputImg");
+            }
+            else{
+                outputImgId = document.getElementById("customFacialOutputImg");
+            }
         }
         else if(funcInvoke.includes("style")){
-            outputImgId = document.getElementById("styleOutputImg");
+            if(modelType.includes("0")){
+                outputImgId = document.getElementById("styleOutputImg");
+            }
+            else{
+                outputImgId = document.getElementById("customStyleOutputImg");
+            }
         }
         else if(funcInvoke.includes("quality")){
-            outputImgId = document.getElementById("qualityOutputImg");
+            if(modelType.includes("0")){
+                outputImgId = document.getElementById("qualityOutputImg");
+            }
+            else{
+                outputImgId = document.getElementById("customQualityOutputImg");
+            }
         }
         
         
         outputImgId.setAttribute("src", response.data);
+        
+        if(params.picDescId){
+            var dimensionsId = document.getElementById(params.picDescId);
+            paramString = paramString.replace("/", "");
+            placeImageDimensions(paramString, dimensionsId);
+        }
     }
 }
 

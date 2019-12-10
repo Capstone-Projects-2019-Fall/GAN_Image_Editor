@@ -1,6 +1,6 @@
 "use strict";
 
-function ajax_upload_form_non_user (formId, pictureId){
+function ajax_upload_form_non_user (formId, pictureId, dimensionsId){
     
     if(!formId || !pictureId){
         console.log("ajax_upload_form_non_user needs a formId and pictureId");
@@ -19,10 +19,14 @@ function ajax_upload_form_non_user (formId, pictureId){
 
     httpReq.onload=function(event){ 
         if(true){ //(event.target.response.toString().includes("Successful upload!")){
-            myconsole.log("Testing new upload. Response:", event.target.response.toString());
+            //myconsole.log("Testing new upload. Response:", event.target.response.toString());
             var fileName = event.target.response.toString().trim();
             
             document.getElementById(pictureId).setAttribute("src", "pics/test/" + fileName);
+            
+            if(dimensionsId){
+                placeImageDimensions(fileName, dimensionsId);
+            }
        
             myconsole.log("Testing new upload. File Name:", fileName.trim());
             //document.getElementById(pictureId)
