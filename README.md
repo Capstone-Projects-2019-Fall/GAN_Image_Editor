@@ -15,12 +15,16 @@ GAN Image Editor is a responsive web application that utilizes the ability of GA
 		- Custom model resulting in miage of size 128x128
 - Low resolution to high resolution
 - Style transfer
+	- After two images are selected, the clothing on the second picture will transfer and replace the clothing on the first image
+	- Contains twe separate models, trained on 256x256 dataset:
+		- Pre-trained model has been trained for 30 iterations
+		- Custom model has only been trained for 15 iteratons.
 
 ### Bugs
 
-#### StyleGAN
-* When running StyleGAN multiple times in a row, it may not update but instead show the last generated image. 
-* Every time the user tries to run StyleGAN, the user may need to refresh the webpage before proceededing
+- StyleGAN
+	- When running StyleGAN multiple times in a row, it may not update but instead show the last generated image. 
+	- Every time the user tries to run StyleGAN, the user may need to refresh the webpage before proceeding
 
 ## Installation and References
 
@@ -108,7 +112,7 @@ The StyleGAN implementation for the GAN Image Editor is built on Impersonator. A
 
 #### Getting Started
 
-A conda virtual environment export was set up with a majority of the depenedencies in an all-in-one place. Try this first:
+- A conda virtual environment export was set up with a majority of the depenedencies in an all-in-one place. Try this first:
 
 ```
 . /opt/anaconda3/etc/profile.d/conda.sh   
@@ -118,24 +122,24 @@ conda env create
 conda activate swapnet
 ```
 
-Set up `Impersonator` and make sure it is functioning before proceeding. if impersonator runs into any issues on the GPU machine, go to the `gan_models/style_gan/impersonator/readme.md` for further instructions on the set up.
+- Set up `Impersonator` and make sure it is functioning before proceeding. if impersonator runs into any issues on the GPU machine, go to the `gan_models/style_gan/impersonator/readme.md` for further instructions on the set up.
 
-Also be sure you are running the virtual environment every time you are using impersonator by running:
+- Also be sure you are running the virtual environment every time you are using impersonator by running:
 
 ```
 . /opt/anaconda3/etc/profile.d/conda.sh   
 conda activate swapnet
 ```
 
-The training dataset can be downloaded from [OneDrive](https://onedrive.live.com/?authkey=%21AJL_NAQMkdXGPlA&id=3705E349C336415F%2188052&cid=3705E349C336415F). This should include `PER_256_video_release.zip`, `smpls.zip`, `train.txt`, and `val.txt`.
+- The training dataset can be downloaded from [OneDrive](https://onedrive.live.com/?authkey=%21AJL_NAQMkdXGPlA&id=3705E349C336415F%2188052&cid=3705E349C336415F). This should include `PER_256_video_release.zip`, `smpls.zip`, `train.txt`, and `val.txt`.
 
-The files should be moved and extracted to `impersonator/data/iPER`.
+- The files should be moved and extracted to `impersonator/data/iPER`.
 Please check `GAN_Image_Editor/gan_models/style_gan/impersonator/readme.md` and `GAN_Image_Editor/gan_models/style_gan/impersonator/doc/train.md` for more details on setting up the pretrained models and the dataset.
 
 
 #### Setting Up Server
 
-Start up the server by running:
+- Start up the server by running:
 ```
 . /opt/anaconda3/etc/profile.d/conda.sh   
 conda activate swapnet
@@ -143,6 +147,6 @@ cd impersonator
 python charles_app.py
 ```
 
-This allows the webpage to call the Style GAN and let it run impersonator whenever called.
+- This allows the webpage to call the Style GAN and let it run impersonator whenever called.
 
 ### Image GAN
