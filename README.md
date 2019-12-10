@@ -5,6 +5,14 @@ GAN Image Editor is a responsive web application that utilizes the ability of GA
 
 ## Features
 
+- Web
+	- Account Creation
+	- Upload/Delete image to a web server
+		- Currently hosted on Temple linux servers.
+	- Image gallery
+		- Hosts and displays all user images
+		- Directly upload the images from account to the model pages
+	- Web pages to upload and executes GAN models and display results
 - Facial Attribute Editing
 	- Edit up to 13 pretrained features in a face image. 
 		- Including changes hair color, skin tone/color, age of face, and more.
@@ -42,7 +50,7 @@ GAN Image Editor is a responsive web application that utilizes the ability of GA
 
 - Port numbers need to be changed in the following files to match what the Flask server is listening to:
 	- testFlask.js
-- displayFacialGAN.js
+	- displayFacialGAN.js
 	- displayStyleGAN.js
  	- displayQualityGAN.js
 
