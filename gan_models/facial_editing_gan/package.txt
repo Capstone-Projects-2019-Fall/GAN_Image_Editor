@@ -1,0 +1,60 @@
+# Name                    Version                   Build  Channel
+absl-py                   0.8.1                    pypi_0    pypi
+aniso8601                 8.0.0                    pypi_0    pypi
+astor                     0.8.0                    pypi_0    pypi
+bleach                    1.5.0                    pypi_0    pypi
+certifi                   2019.9.11                py36_0  
+click                     7.0                      pypi_0    pypi
+cycler                    0.10.0                   pypi_0    pypi
+decorator                 4.4.0                    pypi_0    pypi
+docutils                  0.15.2                   pypi_0    pypi
+flask                     1.1.1                    pypi_0    pypi
+flask-restful             0.3.7                    pypi_0    pypi
+gast                      0.3.2                    pypi_0    pypi
+google-pasta              0.1.7                    pypi_0    pypi
+grpcio                    1.24.3                   pypi_0    pypi
+h5py                      2.10.0                   pypi_0    pypi
+html5lib                  0.9999999                pypi_0    pypi
+imageio                   2.6.1                    pypi_0    pypi
+itsdangerous              1.1.0                    pypi_0    pypi
+jinja2                    2.10.3                   pypi_0    pypi
+joblib                    0.14.0                   pypi_0    pypi
+keras-applications        1.0.8                    pypi_0    pypi
+keras-preprocessing       1.1.0                    pypi_0    pypi
+kiwisolver                1.1.0                    pypi_0    pypi
+markdown                  3.1.1                    pypi_0    pypi
+markupsafe                1.1.1                    pypi_0    pypi
+matplotlib                3.1.1                    pypi_0    pypi
+networkx                  2.4                      pypi_0    pypi
+numpy                     1.17.3                   pypi_0    pypi
+opt-einsum                3.1.0                    pypi_0    pypi
+pillow                    5.0.0                    pypi_0    pypi
+pip                       19.2.3                   py36_0  
+protobuf                  3.10.0                   pypi_0    pypi
+pylib                     1.0.11                   pypi_0    pypi
+pyparsing                 2.4.2                    pypi_0    pypi
+python                    3.6.9                h5500b2f_0  
+python-dateutil           2.8.0                    pypi_0    pypi
+pytz                      2019.3                   pypi_0    pypi
+pywavelets                1.1.1                    pypi_0    pypi
+scikit-image              0.16.2                   pypi_0    pypi
+scikit-learn              0.21.3                   pypi_0    pypi
+scipy                     1.0.1                    pypi_0    pypi
+setuptools                41.4.0                   pypi_0    pypi
+six                       1.12.0                   pypi_0    pypi
+sklearn                   0.0                      pypi_0    pypi
+sqlite                    3.30.0               he774522_0  
+statistics                1.0.3.5                  pypi_0    pypi
+tensorboard               1.7.0                    pypi_0    pypi
+tensorflow-estimator      2.0.1                    pypi_0    pypi
+tensorflow-gpu            1.7.0                    pypi_0    pypi
+termcolor                 1.1.0                    pypi_0    pypi
+tflib                     0.1.0                    pypi_0    pypi
+tqdm                      4.36.1                   pypi_0    pypi
+vc                        14.1                 h0510ff6_4  
+vs2015_runtime            14.16.27012          hf0eaf9b_0  
+werkzeug                  0.16.0                   pypi_0    pypi
+wget                      3.2                      pypi_0    pypi
+wheel                     0.33.6                   pypi_0    pypi
+wincertstore              0.2              py36h7fe50ca_0  
+wrapt                     1.11.2                   pypi_0    pypi
