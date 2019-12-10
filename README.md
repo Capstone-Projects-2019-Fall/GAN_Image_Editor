@@ -108,7 +108,7 @@ The StyleGAN implementation for the GAN Image Editor is built on Impersonator. A
 
 #### Getting Started
 
-A conda virtual environment export was set up with a majority of the depenedencies all-in-one place. Try this first:
+A conda virtual environment export was set up with a majority of the depenedencies in an all-in-one place. Try this first:
 
 ```
 . /opt/anaconda3/etc/profile.d/conda.sh   
@@ -126,6 +126,12 @@ Also be sure you are running the virtual environment every time you are using im
 . /opt/anaconda3/etc/profile.d/conda.sh   
 conda activate swapnet
 ```
+
+The training dataset can be downloaded from [OneDrive](https://onedrive.live.com/?authkey=%21AJL_NAQMkdXGPlA&id=3705E349C336415F%2188052&cid=3705E349C336415F). This should include `PER_256_video_release.zip`, `smpls.zip`, `train.txt`, and `val.txt`.
+
+The files should be moved and extracted to `impersonator/data/iPER`.
+Please check `GAN_Image_Editor/gan_models/style_gan/impersonator/readme.md` and `GAN_Image_Editor/gan_models/style_gan/impersonator/doc/train.md` for more details on setting up the pretrained models and the dataset.
+
 
 #### Setting Up Server
 
