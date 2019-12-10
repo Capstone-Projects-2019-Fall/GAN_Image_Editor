@@ -51,9 +51,9 @@ GAN Image Editor is a responsive web application that utilizes the ability of GA
 	
 - Once dependencies are installed, type the following command in your development environment in order to start to flask server for facial GAN. Default port that the flask server for facial app is run on is 7001.
 
-	'''console
+	```console
 	python facial_app.py
-	'''
+	```
 	
 - The facial GAN allows you to edit the attribute intensity and appearence in a given portrait image. 
 	- The image must be in either .png or .jpeg format.
@@ -62,10 +62,9 @@ GAN Image Editor is a responsive web application that utilizes the ability of GA
 
 - In order to run the facial GAN without the website, you can utilize the following command. 
 
-	'''console
+	```console
 	python test_slide1.py --experiement_name [EXPERIMENT NAME] --test_att [TEST ATTRIBUTE] --test_min [TEST MIN] --test_max [TEST MAX] --n_slide [NUM INTENSITY]
-	'''
-	
+	```
 	- The above command only requires the experiment name and test attribute as mandatory, the rest will take default parameters. 
 	
 
