@@ -50,6 +50,7 @@ GAN Image Editor is a responsive web application that utilizes the ability of GA
 	- Full enviromnment of python packages listed in /GAN_Image_Editor/gan_models/facial_editing_gan/packages.txt in this repo
 	
 - Once dependencies are installed, type the following command in your development environment in order to start to flask server for facial GAN. Default port that the flask server for facial app is run on is 7001.
+
 	'''console
 	python facial_app.py
 	'''
@@ -60,6 +61,7 @@ GAN Image Editor is a responsive web application that utilizes the ability of GA
 		- Bald, Bangs, Black_Hair, Blond_Hair, Brown_Hair, Bushy_Eyebrows, Eyeglasses, Male, Mouth_Slightly_Open, Mustache, No_Beard, Pale_Skin, Young
 
 - In order to run the facial GAN without the website, you can utilize the following command. 
+
 	'''console
 	python test_slide1.py --experiement_name [EXPERIMENT NAME] --test_att [TEST ATTRIBUTE] --test_min [TEST MIN] --test_max [TEST MAX] --n_slide [NUM INTENSITY]
 	'''
