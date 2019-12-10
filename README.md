@@ -97,6 +97,10 @@ GAN Image Editor is a responsive web application that utilizes the ability of GA
 			- Default name is 128_custom.
 	- Download pre-trained model here:
 		- https://github.com/LynnHo/AttGAN-Tensorflow
+		
+- The dataset that were used to train/test the model is celebA. 
+	- The dataset can be found here: http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html
+	- To crop the image for the 384x384 model follow instructions here: https://github.com/LynnHo/HD-CelebA-Cropper
 	
 - References
 	- https://github.com/LynnHo/AttGAN-Tensorflow
