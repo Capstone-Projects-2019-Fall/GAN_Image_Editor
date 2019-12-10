@@ -12,7 +12,7 @@ GAN Image Editor is a responsive web application that utilizes the ability of GA
 	- Edit your own custom image using facial GAN. Model can function on any input size of image. 
 	- Provide 2 seperate models that can run.
 		- Pre-trained model resulting in image of size 384x384
-		- Custom model resulting in miage of size 128x128
+		- Custom model resulting in image of size 128x128
 - Low resolution to high resolution
 	- An image of low resolution will be converted to higher resolution
 		- Pretrained model has been trained for 1000000 iterations
@@ -154,19 +154,21 @@ python charles_app.py
 
 ### Image GAN
 
-The Image GAN implementation is based on SRGAN (Super Resolution Generative Neural Network). The website should be functional in order for the SRGAN to send and receive images. Download the files in thr Quality Gan folder into the directory where you will start up your server from.
+- The Image GAN implementation is based on SRGAN (Super Resolution Generative Neural Network). The website should be functional in order for the SRGAN to send and receive images. Download the files in thr Quality Gan folder into the directory where you will start up your server from.
 
-You can download the pretrained model from https://drive.google.com/a/temple.edu/uc?id=0BxRIhBA0x8lHNDJFVjJEQnZtcmc&export=download.
-Download the VGG19 weights from the http://download.tensorflow.org/models/vgg_19_2016_08_28.tar.gz
-You can download the High Resolution training dataset from https://drive.google.com/file/d/0BxRIhBA0x8lHYXNNVW5YS0I2eXM/view?usp=sharing
-You can download the Low Resolution training dataset from https://drive.google.com/file/d/0BxRIhBA0x8lHNnJFVUR1MjdMWnc/view?usp=sharing
+- You can download the pretrained model from https://drive.google.com/a/temple.edu/uc?id=0BxRIhBA0x8lHNDJFVjJEQnZtcmc&export=download.
+	- Download the VGG19 weights from the http://download.tensorflow.org/models/vgg_19_2016_08_28.tar.gz
+
+- You can download the High Resolution training dataset from https://drive.google.com/file/d/0BxRIhBA0x8lHYXNNVW5YS0I2eXM/view?usp=sharing
+- You can download the Low Resolution training dataset from https://drive.google.com/file/d/0BxRIhBA0x8lHNnJFVUR1MjdMWnc/view?usp=sharing
 
 #### Setting Up Server
 
 Start up the server by running:
 ```
- . /opt/anaconda3/etc/profile.d/conda.sh; conda activate tensorflow_gpuenv   
+. /opt/anaconda3/etc/profile.d/conda.sh; conda activate tensorflow_gpuenv   
 python myra_app.py
+```
 
 References:
 https://github.com/brade31919/SRGAN-tensorflow
