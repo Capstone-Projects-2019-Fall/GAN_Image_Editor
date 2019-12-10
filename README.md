@@ -14,6 +14,9 @@ GAN Image Editor is a responsive web application that utilizes the ability of GA
 		- Pre-trained model resulting in image of size 384x384
 		- Custom model resulting in miage of size 128x128
 - Low resolution to high resolution
+	- An image of low resolution will be converted to higher resolution
+		- Pretrained model has been trained for 1000000 iterations
+		- Custom model has been trained for 9880000 iterations
 - Style transfer
 	- After two images are selected, the clothing on the second picture will transfer and replace the clothing on the first image
 	- Contains twe separate models, trained on 256x256 dataset:
